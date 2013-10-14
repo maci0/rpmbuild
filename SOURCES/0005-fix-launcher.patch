@@ -1,0 +1,10 @@
+--- src/bin/davmail.orig	2013-05-15 08:22:44.000000000 +0200
++++ src/bin/davmail	2013-10-14 14:52:04.118209924 +0200
+@@ -3,5 +3,5 @@
+ # Usage: davmail [</path/to/davmail.properties>]
+ #
+ export LD_LIBRARY_PATH=/usr/lib/jni
+-for i in /usr/share/davmail/lib/*; do export CLASSPATH=$CLASSPATH:$i; done
+-exec java -Xmx512M -Dsun.net.inetaddr.ttl=60 -cp /usr/share/davmail/davmail.jar:/usr/share/java/swt.jar:$CLASSPATH davmail.DavGateway "$@" 
++#for i in /usr/share/java/*; do export CLASSPATH=$CLASSPATH:$i; done
++exec java -Xmx512M -Dsun.net.inetaddr.ttl=60 -cp /usr/share/java/davmail.jar:/usr/share/java/swt.jar:$CLASSPATH davmail.DavGateway "$@" 

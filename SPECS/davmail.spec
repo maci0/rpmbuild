@@ -8,7 +8,7 @@
 
 Name:               davmail
 Version:            4.3.4
-Release:            1%{?dist}
+Release:            2%{?dist}
 Summary:            POP/IMAP/SMTP/Caldav/Carddav/LDAP gateway for Microsoft Exchange
 URL:                http://davmail.sourceforge.net/
 License:            GPLv2+
@@ -21,6 +21,7 @@ Patch1:             0001-no-windows-service.patch
 Patch2:             0002-no-osx-tray.patch
 Patch3:             0003-base64-enc-dec.patch
 Patch4:             0004-Set-classpath-add-target-davmail-lib.patch
+Patch5:             0005-fix-launcher.patch
 
 Requires:           java
 Requires:           jpackage-utils
@@ -68,6 +69,10 @@ window and full calendar support with attendees free/busy display.
 %patch2 -p1
 %patch3 -p1
 %patch4 -p1
+%patch5 -p0
+
+sed -i 's/\r//' releaseguide.txt releasenotes.txt
+
 
 
 %build
@@ -85,10 +90,12 @@ install -p -Dm644 src/java/tray32.png $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/3
 install -p -Dm644 src/java/tray48.png $RPM_BUILD_ROOT%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
 
 install -p -Dm755 src/bin/%{name} $RPM_BUILD_ROOT%{_bindir}/%{name}
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/%{name}
-install -p -m664 dist/*.jar $RPM_BUILD_ROOT%{_datadir}/%{name}/
 
-sed -i 's/\r//' releaseguide.txt releasenotes.txt
+install -d -m 755 $RPM_BUILD_ROOT%{_javadir}
+install -d -m 755 $RPM_BUILD_ROOT%{_mavenpomdir}
+install -pm 644 pom.xml $RPM_BUILD_ROOT/%{_mavenpomdir}/JPP-%{name}.pom
+install -pm 644 dist/*.jar $RPM_BUILD_ROOT/%{_javadir}/%{name}.jar
+%add_maven_depmap JPP-%{name}.pom %{name}.jar
 
 
 %post
@@ -108,15 +115,21 @@ fi
 
 %files
 %doc releaseguide.txt releasenotes.txt
-%{_datadir}/%{name}/
+%{_javadir}/%{name}.jar
 %{_datadir}/icons/hicolor/16x16/apps/%{name}.png
 %{_datadir}/icons/hicolor/32x32/apps/%{name}.png
 %{_datadir}/icons/hicolor/48x48/apps/%{name}.png
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-
+%{_mavendepmapfragdir}/%{name}
+%{_mavenpomdir}/JPP-%{name}.pom
 
 %changelog
+* Mon Oct 14 2013 maci <maci@satgnu.net> - 4.3.4-2
+- install into /usr/share/java
+- add maven pom stuff
+- minor cleanups
+
 * Mon Oct 14 2013 maci <maci@satgnu.net> - 4.3.4-1
 - update to 4.3.4
 
