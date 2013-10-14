@@ -1,4 +1,4 @@
-%global _davsvn 2146
+%global _davsvn 2174
 %ifarch i686
 %global davarch x86
 %endif
@@ -7,8 +7,8 @@
 %endif
 
 Name:               davmail
-Version:            4.3.3
-Release:            3%{?dist}
+Version:            4.3.4
+Release:            1%{?dist}
 Summary:            POP/IMAP/SMTP/Caldav/Carddav/LDAP gateway for Microsoft Exchange
 URL:                http://davmail.sourceforge.net/
 License:            GPLv2+
@@ -117,6 +117,9 @@ fi
 
 
 %changelog
+* Mon Oct 14 2013 maci <maci@satgnu.net> - 4.3.4-1
+- update to 4.3.4
+
 * Fri Jul 26 2013 maci <maci@satgnu.net> - 4.3.3-3
 - fix some dependencies
 

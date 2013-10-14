@@ -1,0 +1,73 @@
+--- a/build.xml
++++ b/build.xml
+@@ -3,10 +3,19 @@
+     <property name="version" value="4.3.4"/>
+ 
+     <path id="classpath">
+-        <pathelement location="classes"/>
+-        <fileset dir="lib">
+-            <include name="*.jar"/>
+-        </fileset>
++        <pathelement location="${commons-codec}" />
++        <pathelement location="${servlet-api}" />
++        <pathelement location="${commons-httpclient}" />
++        <pathelement location="${commons-logging}" />
++        <pathelement location="${htmlcleaner}" />
++        <pathelement location="${gnumail}" />
++        <pathelement location="${jcifs}" />
++        <pathelement location="${jackrabbit-webdav}" />
++        <pathelement location="${woodstox-core}" />
++        <pathelement location="${stax2-api}" />
++        <pathelement location="${swt}" />
++        <pathelement location="${slf4j-api}" />
++        <pathelement location="${log4j}" />
+     </path>
+ 
+     <target name="clean">
+@@ -247,34 +254,13 @@
+     </target>
+ 
+ 
+-    <target name="dist" depends="compile">
++    <target name="davmail-lib" depends="compile">
+         <property name="release-name" value="${release}-trunk"/>
+         <delete dir="dist"/>
+         <mkdir dir="dist"/>
+         <echo file="dist/version.txt" message="${release}"/>
+         <pathconvert property="manifest-classpath" pathsep=" ">
+-            <mapper>
+-                <chainedmapper>
+-                    <!-- remove absolute path -->
+-                    <flattenmapper/>
+-                    <globmapper from="*" to="lib/*"/>
+-                </chainedmapper>
+-            </mapper>
+-            <path>
+-                <fileset dir="lib">
+-                    <include name="*.jar"/>
+-                    <exclude name="ant-deb*.jar"/>
+-                    <exclude name="jarbundler-*.jar"/>
+-                    <exclude name="jsmoothgen-ant-*.jar"/>
+-                    <exclude name="junit-*.jar"/>
+-                    <exclude name="libgrowl-*.jar"/>
+-                    <exclude name="nsisant-*.jar"/>
+-                    <exclude name="redline-*.jar"/>
+-                    <exclude name="servlet-api-*.jar"/>
+-                    <exclude name="swt-*.jar"/>
+-                    <exclude name="winrun4j-*.jar"/>
+-                </fileset>
+-            </path>
++            <path refid="classpath"/>
+         </pathconvert>
+         <jar basedir="target/classes" destfile="dist/davmail.jar">
+             <manifest>
+@@ -287,6 +273,9 @@
+                 </section>
+             </manifest>
+         </jar>
++	</target>
++
++       <target name="dist" depends="compile, davmail-lib">
+         <copy todir="dist/lib">
+             <fileset dir="lib">
+                 <include name="*.jar"/>
