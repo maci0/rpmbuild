@@ -1,7 +1,7 @@
 --- a/build.xml
 +++ b/build.xml
 @@ -3,10 +3,19 @@
-     <property name="version" value="4.3.4"/>
+     <property name="version" value="4.4.0"/>
  
      <path id="classpath">
 -        <pathelement location="classes"/>
