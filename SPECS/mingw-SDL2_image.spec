@@ -2,7 +2,7 @@
 
 Name:           mingw-SDL2_image
 Version:        2.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        MinGW Windows port of the Image loading library for SDL2
 
 License:        LGPLv2+
@@ -14,8 +14,6 @@ BuildArch:      noarch
 
 BuildRequires:  mingw32-filesystem >= 95
 BuildRequires:  mingw32-gcc
-BuildRequires:  mingw32-binutils
-BuildRequires:  mingw32-win-iconv
 BuildRequires:  mingw32-SDL2
 BuildRequires:  mingw32-libpng
 BuildRequires:  mingw32-libjpeg-turbo
@@ -25,8 +23,6 @@ BuildRequires:  mingw32-libwebp
 
 BuildRequires:  mingw64-filesystem >= 95
 BuildRequires:  mingw64-gcc
-BuildRequires:  mingw64-binutils
-BuildRequires:  mingw64-win-iconv
 BuildRequires:  mingw64-SDL2
 BuildRequires:  mingw64-libpng
 BuildRequires:  mingw64-libjpeg-turbo
@@ -44,7 +40,6 @@ various formats (BMP, PPM, PCX, GIF, JPEG, PNG) as SDL2 surfaces.
 # Win32
 %package -n mingw32-SDL2_image
 Summary:        MinGW Windows port of the Image loading library for SDL2
-Requires:       pkgconfig
 
 %description -n mingw32-SDL2_image
 Simple DirectMedia Layer (SDL2) is a cross-platform multimedia library
@@ -55,7 +50,6 @@ various formats (BMP, PPM, PCX, GIF, JPEG, PNG) as SDL2 surfaces.
 # Win64
 %package -n mingw64-SDL2_image
 Summary:        MinGW Windows port of the Image loading library for SDL2
-Requires:       pkgconfig
 
 %description -n mingw64-SDL2_image
 Simple DirectMedia Layer (SDL2) is a cross-platform multimedia library
@@ -111,5 +105,8 @@ find $RPM_BUILD_ROOT -name "*.la" -delete
 
 
 %changelog
+* Tue May 13 2014 Marcel Wysocki <maci@satgnu.net> - 2.0.0-2
+- Removed redundant BuildRequires
+
 * Mon May 12 2014 Marcel Wysocki <maci@satgnu.net> - 2.0.0-1
 - Initial rpm

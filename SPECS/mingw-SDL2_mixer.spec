@@ -2,7 +2,7 @@
 
 Name:           mingw-SDL2_mixer
 Version:        2.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        MinGW Windows port of Simple DirectMedia Layer's Sample Mixer Library
 
 License:        zlib
@@ -14,16 +14,12 @@ BuildArch:      noarch
 
 BuildRequires:  mingw32-filesystem >= 95
 BuildRequires:  mingw32-gcc
-BuildRequires:  mingw32-binutils
-BuildRequires:  mingw32-win-iconv
 BuildRequires:  mingw32-SDL2
 BuildRequires:  mingw32-libvorbis
 BuildRequires:  mingw32-flac
 
 BuildRequires:  mingw64-filesystem >= 95
 BuildRequires:  mingw64-gcc
-BuildRequires:  mingw64-binutils
-BuildRequires:  mingw64-win-iconv
 BuildRequires:  mingw64-SDL2
 BuildRequires:  mingw64-libvorbis
 BuildRequires:  mingw64-flac
@@ -37,7 +33,6 @@ MikMod MOD library.
 # Win32
 %package -n mingw32-SDL2_mixer
 Summary:        MinGW Windows port of Simple DirectMedia Layer's Sample Mixer Library
-Requires:       pkgconfig
 
 %description -n mingw32-SDL2_mixer
 A simple multi-channel audio mixer for SDL2. It supports 4 channels of
@@ -47,7 +42,6 @@ MikMod MOD library.
 # Win64
 %package -n mingw64-SDL2_mixer
 Summary:        MinGW Windows port of Simple DirectMedia Layer's Sample Mixer Library
-Requires:       pkgconfig
 
 %description -n mingw64-SDL2_mixer
 A simple multi-channel audio mixer for SDL2. It supports 4 channels of
@@ -95,5 +89,8 @@ find $RPM_BUILD_ROOT -name "*.la" -delete
 
 
 %changelog
+* Tue May 13 2014 Marcel Wysocki <maci@satgnu.net> - 2.0.0-2
+- Removed redundant BuildRequires
+
 * Mon May 12 2014 Marcel Wysocki <maci@satgnu.net> - 2.0.0-1
 - Initial rpm
