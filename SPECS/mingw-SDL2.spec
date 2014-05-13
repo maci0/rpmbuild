@@ -2,7 +2,7 @@
 
 Name:           mingw-SDL2
 Version:        2.0.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        MinGW Windows port of SDL2 cross-platform multimedia library
 
 License:        LGPLv2+
@@ -14,13 +14,9 @@ BuildArch:      noarch
 
 BuildRequires:  mingw32-filesystem >= 95
 BuildRequires:  mingw32-gcc
-BuildRequires:  mingw32-binutils
-BuildRequires:  mingw32-win-iconv
 
 BuildRequires:  mingw64-filesystem >= 95
 BuildRequires:  mingw64-gcc
-BuildRequires:  mingw64-binutils
-BuildRequires:  mingw64-win-iconv
 
 # Not required at the moment, but SDL does contain plenty of C++ code,
 # I just haven't worked out how to enable it.
@@ -40,9 +36,6 @@ device.
 # Win32
 %package -n mingw32-SDL2
 Summary:        MinGW Windows port of SDL cross-platform multimedia library
-Requires:       pkgconfig
-# kraxel pointed out that the headers need <iconv.h>, hence:
-Requires:       mingw32-win-iconv
 
 %description -n mingw32-SDL2
 Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
@@ -52,9 +45,6 @@ device.
 # Win32
 %package -n mingw64-SDL2
 Summary:        MinGW Windows port of SDL cross-platform multimedia library
-Requires:       pkgconfig
-# kraxel pointed out that the headers need <iconv.h>, hence:
-Requires:       mingw64-win-iconv
 
 %description -n mingw64-SDL2
 Simple DirectMedia Layer (SDL) is a cross-platform multimedia library
@@ -89,7 +79,7 @@ find $RPM_BUILD_ROOT -name "*.la" -delete
 
 # Win32
 %files -n mingw32-SDL2
-%doc README.txt CHANGES.txt COPYING.txt
+%doc README.txt COPYING.txt
 %{mingw32_bindir}/SDL2.dll
 %{mingw32_bindir}/sdl2-config
 %{mingw32_libdir}/libSDL2.dll.a
@@ -100,7 +90,7 @@ find $RPM_BUILD_ROOT -name "*.la" -delete
 
 # Win64
 %files -n mingw64-SDL2
-%doc README.txt CHANGES.txt COPYING.txt
+%doc README.txt COPYING.txt
 %{mingw64_bindir}/SDL2.dll
 %{mingw64_bindir}/sdl2-config
 %{mingw64_libdir}/libSDL2.dll.a
@@ -111,5 +101,8 @@ find $RPM_BUILD_ROOT -name "*.la" -delete
 
 
 %changelog
+* Tue May 13 2014 Marcel Wysocki <maci@satgnu.net> - 2.0.3-2
+- Removed redundant BuildRequires
+
 * Mon May 12 2014 Marcel Wysocki <maci@satgnu.net> - 2.0.3-1
 - Initial rpm
