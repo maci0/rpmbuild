@@ -2,7 +2,7 @@
 
 Name:           mingw-SDL2
 Version:        2.0.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        MinGW Windows port of SDL2 cross-platform multimedia library
 
 License:        LGPLv2+
@@ -11,6 +11,8 @@ URL:            http://www.libsdl.org/
 Source0:        http://www.libsdl.org/release/SDL2-%{version}.tar.gz
 
 BuildArch:      noarch
+
+BuildRequires:  dos2unix
 
 BuildRequires:  mingw32-filesystem >= 95
 BuildRequires:  mingw32-gcc
@@ -57,6 +59,7 @@ device.
 
 %prep
 %setup -q -n SDL2-%{version}
+dos2unix COPYING.txt README.txt
 
 
 %build
@@ -101,6 +104,9 @@ find $RPM_BUILD_ROOT -name "*.la" -delete
 
 
 %changelog
+* Fri May 16 2014 Marcel Wysocki <maci@satgnu.net> - 2.0.3-3
+- Fix rpmlint warnings
+
 * Tue May 13 2014 Marcel Wysocki <maci@satgnu.net> - 2.0.3-2
 - Removed redundant BuildRequires
 
