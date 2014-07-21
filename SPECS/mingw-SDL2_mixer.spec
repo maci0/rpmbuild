@@ -2,13 +2,13 @@
 
 Name:           mingw-SDL2_mixer
 Version:        2.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        MinGW Windows port of Simple DirectMedia Layer's Sample Mixer Library
 
 License:        zlib
 Group:          Development/Libraries
-URL:            http://www.libSDL2.org/projects/SDL_mixer/
-Source0:        http://www.libSDL2.org/projects/SDL_mixer/release/SDL2_mixer-%{version}.tar.gz
+URL:            http://www.libSDL.org/projects/SDL_mixer/
+Source0:        http://www.libSDL.org/projects/SDL_mixer/release/SDL2_mixer-%{version}.tar.gz
 
 BuildArch:      noarch
 
@@ -89,6 +89,9 @@ find $RPM_BUILD_ROOT -name "*.la" -delete
 
 
 %changelog
+* Mon Jul 21 2014 maci <maci@satgnu.net> - 2.0.0-3
+- Fix homepage URL
+
 * Tue May 13 2014 Marcel Wysocki <maci@satgnu.net> - 2.0.0-2
 - Removed redundant BuildRequires
 
