@@ -2,7 +2,7 @@
 
 Name:           mingw-SDL2_image
 Version:        2.0.0
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        MinGW Windows port of the Image loading library for SDL2
 
 License:        LGPLv2+
@@ -86,6 +86,8 @@ various formats (BMP, PPM, PCX, GIF, JPEG, PNG) as SDL2 surfaces.
 # Drop all .la files
 find $RPM_BUILD_ROOT -name "*.la" -delete
 
+# Strip wrong end of line encoding
+sed -i 's/\r$//' README.txt CHANGES.txt COPYING.txt
 
 # Win32
 %files -n mingw32-SDL2_image
@@ -105,6 +107,10 @@ find $RPM_BUILD_ROOT -name "*.la" -delete
 
 
 %changelog
+* Fri Feb 06 2015 maci <maci@satgnu.net> - 2.0.0-4
+- Strip wrong end of line encoding in README.txt CHANGES.txt COPYING.txt
+- Fedora 21 rebuild
+
 * Mon Jul 21 2014 maci <maci@satgnu.net> - 2.0.0-3
 - Fix homepage URL
 
