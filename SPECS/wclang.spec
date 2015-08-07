@@ -25,7 +25,9 @@ BuildRequires:  mingw64-gcc
 
 Requires:       clang
 Requires:       mingw32-gcc
+Requires:       mingw32-gcc-c++
 Requires:       mingw64-gcc
+Requires:       mingw64-gcc-c++
 
 %description
 Wclang is a tool which helps you to cross compile source code easily with
