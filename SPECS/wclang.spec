@@ -28,9 +28,10 @@ Requires:       mingw32-gcc
 Requires:       mingw64-gcc
 
 %description
-Wclang is a tool which helps you to cross compile source code easily with clang on Linux/Unix for Windows.
-Wclang is basically a wrapper for clang, which allows you to directly target Windows.
-Wclang detects the target and headers automatically and adds them to the clang invocation command.
+Wclang is a tool which helps you to cross compile source code easily with
+clang on Linux/Unix for Windows. Wclang is basically a wrapper for clang,
+which allows you to directly target Windows. Wclang detects the target and
+headers automatically and adds them to the clang invocation command.
 
 
 %prep
@@ -54,5 +55,5 @@ make install DESTDIR=%{buildroot}
 
 
 %changelog
-* Fri Aug  7 2015 Marcel Wysocki <maci@satgnu.net>
+* Fri Aug  7 2015 Marcel Wysocki <maci@satgnu.net> - 0.0.0-1.20150807git816bdbb
 - Initial release
