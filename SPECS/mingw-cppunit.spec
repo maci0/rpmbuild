@@ -2,7 +2,7 @@
 
 Name:           mingw-cppunit
 Version:        1.12.1
-Release:        14%{?dist}
+Release:        15%{?dist}
 Summary:        MinGW Windows C++ unit testing framework
 
 Group:          Development/Libraries
@@ -92,8 +92,11 @@ find $RPM_BUILD_ROOT -name "*.la" -delete
 
 
 %changelog
-* Tue Feb 10 2015 Marcel Wysocki <maci@satgnu.net> - 1.12.1-14
+* Mon Aug 03 2015 Marcel Wysocki <maci@satgnu.net> - 1.12.1-15
 - Add support for mingw64
+
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.12.1-14
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
 * Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.12.1-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
