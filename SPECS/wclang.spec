@@ -52,6 +52,8 @@ make install DESTDIR=%{buildroot}
 %{_bindir}/i686-w64-mingw32-clang++
 %{_bindir}/x86_64-w64-mingw32-clang
 %{_bindir}/x86_64-w64-mingw32-clang++
+%doc README
+%license LICENSE
 
 
 %changelog
