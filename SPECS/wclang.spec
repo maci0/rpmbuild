@@ -23,6 +23,9 @@ BuildRequires:  mingw64-filesystem >= 95
 BuildRequires:  mingw64-binutils
 BuildRequires:  mingw64-gcc
 
+Requires:       clang
+Requires:       mingw32-gcc
+Requires:       mingw64-gcc
 
 %description
 Wclang is a tool which helps you to cross compile source code easily with clang on Linux/Unix for Windows.
